@@ -18,6 +18,9 @@ CANCTRL_MODE_LOOPBACK = 4
 CANCTRL_MODE_LISTENONLY = 2
 CANCTRL_MODE_NORMAL = 0
 
+# Internal modes
+CANCTRL_MODE_BLOCKING = 32
+
 # Controller baudrates
 CANCTRL_BAUDRATE_1000 = 1000
 CANCTRL_BAUDRATE_500 = 500
@@ -56,7 +59,6 @@ class CanCtrlMsg(ct.Structure):
 				("frameInfo", ct.c_ubyte),
 				("data", ct.c_ubyte * 8),
 				("timeStamp", ct.c_uint)]
-
 	def __eq__(self, other):
 		for field in self._fields_:
 			attr_name = field[0]
